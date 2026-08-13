@@ -11,3 +11,8 @@ function getHumanChoice() {
     let message = prompt("Choose between 'Rock', 'Paper' and 'Scissors': ");
     return message
 }
+
+// Thirdly: Initialization of the variable representing the score of each game.
+
+let humanScore = 0;
+let computerScore = 0;
