@@ -37,3 +37,16 @@ function playRound(humanChoice, computerChoice) {
         console.log("La partie est nulle.\nPas de gagant");
     }
 }
+
+// Fifth: logic allowing you to play the entire game.
+
+function playGame() {
+    for (let i = 0; i < 5; i++) {
+        playRound(getHumanChoice(), getComputerChoice());
+    }
+    console.log(humanScore, computerScore);
+    (humanScore === computerScore) ? console.log("Jeux Nul") : (humanScore > computerScore)? console.log("Gagné"): console.log("Perdu"); 
+    
+}
+
+playGame()
