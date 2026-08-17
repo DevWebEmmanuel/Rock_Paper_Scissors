@@ -31,11 +31,43 @@ function playRound(humanChoice, computerChoice) {
     }
 }
 
+const container = document.querySelector("body");
+
+const elementDiv = document.createElement("div"),
+      elementPUser = document.createElement("p"),
+      elementPComp = document.createElement("p");
+
 const allSelection = document.querySelectorAll("button");
 
 allSelection.forEach((playerSelection) => {
-    playerSelection.addEventListener("click", () => {
-        const humanSelection = playerSelection.textContent.trim();
-        playRound(humanSelection, getComputerChoice());
-    });
+
+    const handleClick = () => {
+        if (humanScore < 5 && computerScore < 5) {
+
+            const humanSelection = playerSelection.textContent.trim();
+            playRound(humanSelection, getComputerChoice());
+
+            elementPUser.textContent = "User: " + humanScore;
+            elementPComp.textContent = "Computer: " + computerScore;
+
+            elementDiv.appendChild(elementPComp);
+            elementDiv.appendChild(elementPUser);
+
+            container.appendChild(elementDiv);
+        } else {
+            const end = document.createElement("p");
+
+            end.textContent = "Le jeu est terminé \n";
+            end.textContent += (humanScore > computerScore) ? " Vous avez gagné !": " Vous avez perdue !";
+            
+            elementDiv.appendChild(end);
+            container.appendChild(elementDiv);
+           
+            allSelection.forEach((selection) => {
+                selection.removeEventListener("click", handleClick);
+            });
+        };        
+    };
+    playerSelection.addEventListener("click", handleClick);
 });
+
