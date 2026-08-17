@@ -30,3 +30,12 @@ function playRound(humanChoice, computerChoice) {
         console.log("La partie est nulle.\nPas de gagnant");
     }
 }
+
+const allSelection = document.querySelectorAll("button");
+
+allSelection.forEach((playerSelection) => {
+    playerSelection.addEventListener("click", () => {
+        const humanSelection = playerSelection.textContent.trim();
+        playRound(humanSelection, getComputerChoice());
+    });
+});
