@@ -5,19 +5,12 @@ function getComputerChoice() {
     return table[Math.floor(Math.random() * table.length)]
 }
 
-// Secondly: Creating the logic to obtain the human's choice 
-
-function getHumanChoice() {
-    let message = prompt("Choose between 'Rock', 'Paper' and 'Scissors': ");
-    return message
-}
-
-// Thirdly: Initialization of the variable representing the score of each game.
+// Secondly: Initialization of the variable representing the score of each game.
 
 let humanScore = 0;
 let computerScore = 0;
 
-// Fourthly: logic to play a single round
+// Thirdly: logic to play a single round
 
 function playRound(humanChoice, computerChoice) {
     let human = humanChoice.toLowerCase();
@@ -34,19 +27,6 @@ function playRound(humanChoice, computerChoice) {
         console.log("Vous avez gagné la partie !");
         humanScore++;
     } else {
-        console.log("La partie est nulle.\nPas de gagant");
+        console.log("La partie est nulle.\nPas de gagnant");
     }
 }
-
-// Fifth: logic allowing you to play the entire game.
-
-function playGame() {
-    for (let i = 0; i < 5; i++) {
-        playRound(getHumanChoice(), getComputerChoice());
-    }
-    console.log(humanScore, computerScore);
-    (humanScore === computerScore) ? console.log("Jeux Nul") : (humanScore > computerScore)? console.log("Gagné"): console.log("Perdu"); 
-    
-}
-
-playGame()
